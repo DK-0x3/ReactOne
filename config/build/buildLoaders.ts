@@ -1,6 +1,6 @@
-import webpack from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {IBuildOptions} from "./types/config";
+import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import {IBuildOptions} from './types/config';
 
 export function buildLoaders({ isDev }: IBuildOptions):webpack.RuleSetRule[] {
 
@@ -13,14 +13,14 @@ export function buildLoaders({ isDev }: IBuildOptions):webpack.RuleSetRule[] {
 		test: /\.(js|jsx|tsx)$/,
 		exclude: /node_modules/,
 		use: {
-			loader: "babel-loader",
+			loader: 'babel-loader',
 			options: {
 				presets: ['@babel/preset-env'],
-				"plugins": [
+				'plugins': [
 					[
-						"i18next-extract",
+						'i18next-extract',
 						{
-							locales: ["ru", "en"],
+							locales: ['ru', 'en'],
 							keyAsDefaultValue: true,
 						}
 					],
@@ -34,7 +34,7 @@ export function buildLoaders({ isDev }: IBuildOptions):webpack.RuleSetRule[] {
 		use: [
 			isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
 			{
-				loader: "css-loader",
+				loader: 'css-loader',
 				options: {
 					modules: {
 						auto: (resPath: string) => Boolean(resPath.includes('.module.')),
@@ -44,7 +44,7 @@ export function buildLoaders({ isDev }: IBuildOptions):webpack.RuleSetRule[] {
 					},
 				}
 			},
-			"sass-loader",
+			'sass-loader',
 		],
 	}
 

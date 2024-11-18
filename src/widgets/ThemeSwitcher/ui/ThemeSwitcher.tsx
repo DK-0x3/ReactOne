@@ -1,10 +1,10 @@
-import {classNames} from "shared/lib/classNames/classNames";
+import {classNames} from 'shared/lib/classNames/classNames';
 import * as cls from './ThemeSwitcher.module.scss'
-import React from "react";
-import {Theme, useTheme} from "app/providers/ThemeProvider";
+import React from 'react';
+import {Theme, useTheme} from 'app/providers/ThemeProvider';
 import LightIcon from 'shared/assets/icons/ThemeLight.svg';
 import DarkIcon from 'shared/assets/icons/ThemeDark.svg';
-import {Button, ThemeButton} from "shared/ui/Button/Button";
+import {Button, ThemeButton} from 'shared/ui/Button/Button';
 
 interface IThemeSwitcherProps {
     className?: string;

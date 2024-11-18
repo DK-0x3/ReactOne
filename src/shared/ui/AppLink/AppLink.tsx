@@ -8,26 +8,26 @@ export enum AppLinkTheme {
     SECONDARY = 'secondary',
 }
 
-interface AppLinkProps extends LinkProps {
+interface IAppLinkProps extends LinkProps {
     className?: string;
     theme?: AppLinkTheme;
 }
 
-export const AppLink: FC<AppLinkProps> = (props) => {
-    const {
-        to,
-        className,
-        children,
-        theme = AppLinkTheme.PRIMARY,
-        ...otherProps
-    } = props;
+export const AppLink: FC<IAppLinkProps> = (props) => {
+	const {
+		to,
+		className,
+		children,
+		theme = AppLinkTheme.PRIMARY,
+		...otherProps
+	} = props;
 
-    return (
-        <Link to={to}
-              className={classNames(cls.AppLink, {}, [className, cls[theme]])}
-              {...otherProps}
-        >
-            {children}
-        </Link>
-    );
+	return (
+		<Link to={to}
+			className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+			{...otherProps}
+		>
+			{children}
+		</Link>
+	);
 };

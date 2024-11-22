@@ -32,7 +32,7 @@ export const Navbar = ({ className }: INavbarProps) => {
 				</Button>
 
 				<Modal isOpen={isAuthModal} onClose={onToggleModal}>
-					sdvsdv,v sdvksodksdjs os;djfs;dfjgd;iogdjs fgsdf gfdjgopdfgj
+					{t('Авторизация')}
 				</Modal>
 
 				<AppLink theme={AppLinkTheme.SECONDARY} to={'/'} className={cls.mainLink}>

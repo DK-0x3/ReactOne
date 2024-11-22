@@ -1,17 +1,17 @@
-import {classNames} from 'shared/lib/classNames/classNames';
-import * as cls from './Navbar.module.scss'
-import {AppLink, AppLinkTheme} from 'shared/ui/AppLink/AppLink';
-import {Button, ThemeButton} from "shared/ui/Button/Button";
-import {Modal} from "shared/ui/Modal/Modal";
-import React, {useCallback, useState} from "react";
-import {useTranslation} from "react-i18next";
+import { classNames } from 'shared/lib/classNames/classNames';
+import * as cls from './Navbar.module.scss';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Modal } from 'shared/ui/Modal/Modal';
+import React, { useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface INavbarProps {
     className?: string;
 }
 
-export const Navbar = ({className}: INavbarProps) => {
-	const {t} = useTranslation();
+export const Navbar = ({ className }: INavbarProps) => {
+	const { t } = useTranslation();
 
 	const [isAuthModal, setAuthModal] = useState(false);
 
@@ -32,14 +32,14 @@ export const Navbar = ({className}: INavbarProps) => {
 				</Button>
 
 				<Modal isOpen={isAuthModal} onClose={onToggleModal}>
-					sdvsdv,v sdvksodksdjs os;djfs;dfjgd;iogdjs fgsdf gfdjgopdfgj ksd'fp g''fp kjdfgogdf'fdg
+					sdvsdv,v sdvksodksdjs os;djfs;dfjgd;iogdjs fgsdf gfdjgopdfgj
 				</Modal>
 
 				<AppLink theme={AppLinkTheme.SECONDARY} to={'/'} className={cls.mainLink}>
-					Главная
+					{t('Главная')}
 				</AppLink>
 				<AppLink theme={AppLinkTheme.SECONDARY} to={'/about'}>
-					О Сайте
+					{t('О сайте')}
 				</AppLink>
 			</div>
 		</div>

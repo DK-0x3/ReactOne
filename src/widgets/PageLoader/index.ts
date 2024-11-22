@@ -1,4 +1,4 @@
-import {PageLoader} from "widgets/PageLoader/ui/PageLoader";
+import { PageLoader } from 'widgets/PageLoader/ui/PageLoader';
 
-export {PageLoader};
+export { PageLoader };
 

@@ -1,10 +1,10 @@
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
-import {IBuildOptions} from './types/config';
+import { IBuildOptions } from './types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-export function buildPlugins({paths, isDev}: IBuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({ paths, isDev }: IBuildOptions): webpack.WebpackPluginInstance[] {
 	return [
 		new HTMLWebpackPlugin({
 			template: paths.html,
@@ -21,5 +21,5 @@ export function buildPlugins({paths, isDev}: IBuildOptions): webpack.WebpackPlug
 		new BundleAnalyzerPlugin({
 			openAnalyzer: false,
 		}),
-	]
+	];
 }

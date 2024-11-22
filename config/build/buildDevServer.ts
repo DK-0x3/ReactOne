@@ -1,4 +1,4 @@
-import {IBuildOptions} from './types/config';
+import { IBuildOptions } from './types/config';
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 
 export function buildDevServer(options: IBuildOptions): DevServerConfiguration {
@@ -7,5 +7,5 @@ export function buildDevServer(options: IBuildOptions): DevServerConfiguration {
 		open: true,
 		historyApiFallback: true,
 		hot: true,
-	}
+	};
 }

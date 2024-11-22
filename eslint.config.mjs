@@ -134,7 +134,14 @@ export default [
 			],
 			'no-param-reassign': 0,
 			'global-require': 0,
-			'i18next/no-literal-string': ['error', {markupOnly: true}],
+			'i18next/no-literal-string': [
+				'error',
+				{
+					markupOnly: true,
+					ignoreAttribute: ['data-testid', 'to'],
+				}],
+			'semi': ['error', 'always'],
+			'object-curly-spacing': ['error', 'always'],
 		},
 		settings: {
 			'import/resolver': {

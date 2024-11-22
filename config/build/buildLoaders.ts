@@ -1,13 +1,13 @@
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import {IBuildOptions} from './types/config';
+import { IBuildOptions } from './types/config';
 
-export function buildLoaders({ isDev }: IBuildOptions):webpack.RuleSetRule[] {
+export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
 
 	const svgLoader = {
 		test: /\.svg$/,
 		use: ['@svgr/webpack'],
-	}
+	};
 
 	const babelLoader = {
 		test: /\.(js|jsx|tsx)$/,
@@ -27,7 +27,7 @@ export function buildLoaders({ isDev }: IBuildOptions):webpack.RuleSetRule[] {
 				]
 			}
 		}
-	}
+	};
 
 	const cssLoader = {
 		test: /\.s[ac]ss$/i,
@@ -37,7 +37,7 @@ export function buildLoaders({ isDev }: IBuildOptions):webpack.RuleSetRule[] {
 				loader: 'css-loader',
 				options: {
 					modules: {
-						auto: (resPath: string) => Boolean(resPath.includes('.module.')),
+						auto: (resPath: string) => resPath.includes('.module.'),
 						localIdentName: isDev
 							? '[path][name]__[local]--[hash:base64:5]'
 							: '[hash:base64:8]',
@@ -46,13 +46,13 @@ export function buildLoaders({ isDev }: IBuildOptions):webpack.RuleSetRule[] {
 			},
 			'sass-loader',
 		],
-	}
+	};
 
 	const typescriptLoader = {
 		test: /\.tsx?$/,
 		use: 'ts-loader',
 		exclude: /node_modules/,
-	}
+	};
 
 	const fileLoader = {
 		test: /\.(png|jpe?g|gif|woff2|woff)$/i,
@@ -61,7 +61,7 @@ export function buildLoaders({ isDev }: IBuildOptions):webpack.RuleSetRule[] {
 				loader: 'file-loader',
 			},
 		],
-	}
+	};
 
 	return [
 		svgLoader,
@@ -69,5 +69,5 @@ export function buildLoaders({ isDev }: IBuildOptions):webpack.RuleSetRule[] {
 		fileLoader,
 		typescriptLoader,
 		cssLoader
-	]
+	];
 }

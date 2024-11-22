@@ -11,6 +11,7 @@ import i18next from 'eslint-plugin-i18next';
 export default [
 	{
 		files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+		ignores: ['build/**/*'],
 		languageOptions: {
 			parser: parser,
 			parserOptions: {

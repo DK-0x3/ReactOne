@@ -23,10 +23,13 @@ jobs:
         run: npm install
 
       - name: build production project
+        if: always()
         run: npm run build:prod
 
       - name: linting typescript
+        if: always()
         run: npm run lint
 
       - name: unit tests
+        if: always()
         run: npm run test

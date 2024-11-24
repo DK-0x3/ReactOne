@@ -5,9 +5,10 @@ import { classNames } from 'shared/lib/classNames/classNames';
 
 interface ILangSwitcherProps {
     className?: string;
+	short?: boolean;
 }
 
-export const LangSwitcher = ({ className }: ILangSwitcherProps) => {
+export const LangSwitcher = ({ className, short }: ILangSwitcherProps) => {
 	const { t, i18n } = useTranslation();
 
 	const toggle = () => {
@@ -20,7 +21,7 @@ export const LangSwitcher = ({ className }: ILangSwitcherProps) => {
 			theme={ThemeButton.CLEAR}
 			onClick={toggle}
 		>
-			{t('Язык')}
+			{t(short ? 'Короткий язык' : 'Язык')}
 		</Button>
 	);
 };

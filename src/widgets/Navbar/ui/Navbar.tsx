@@ -34,13 +34,6 @@ export const Navbar = ({ className }: INavbarProps) => {
 				<Modal isOpen={isAuthModal} onClose={onToggleModal}>
 					{t('Авторизация')}
 				</Modal>
-
-				<AppLink theme={AppLinkTheme.SECONDARY} to={'/'} className={cls.mainLink}>
-					{t('Главная')}
-				</AppLink>
-				<AppLink theme={AppLinkTheme.SECONDARY} to={'/about'}>
-					{t('О сайте')}
-				</AppLink>
 			</div>
 		</div>
 	);

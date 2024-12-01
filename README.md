@@ -3,6 +3,7 @@
 [ссылка на описание курса](https://ulbitv.ru/frontend)
 
 ### Стек:
+- React
 - Webpack
 - Jest
 - ESlint

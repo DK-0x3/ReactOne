@@ -41,6 +41,7 @@ export default [
 			'jsx-a11y/control-has-associated-label': 'off',
 			'react/react-in-jsx-scope': 'off',
 			'react/no-deprecated': 'off',
+			'@typescript-eslint/no-require-imports': 'warn',
 			'@typescript-eslint/naming-convention': [
 				'error',
 				{

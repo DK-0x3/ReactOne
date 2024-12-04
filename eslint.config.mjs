@@ -10,8 +10,8 @@ import i18next from 'eslint-plugin-i18next';
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
 	{
-		files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-		ignores: ['build/**/*'],
+		files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}',],
+		ignores: ['build/**/*',],
 		languageOptions: {
 			parser: parser,
 			parserOptions: {
@@ -34,7 +34,7 @@ export default [
 			...pluginReact.configs.flat.recommended.rules,
 			...pluginImport.configs.errors.rules,
 			...pluginImport.configs.warnings.rules,
-			'quotes': ['error', 'single'],
+			'quotes': ['error', 'single',],
 			'no-undef': 'off',
 			'@typescript-eslint/explicit-function-return-type': 'off',
 			'no-underscore-dangle': 'off',
@@ -46,7 +46,7 @@ export default [
 				'error',
 				{
 					selector: 'interface',
-					format: ['PascalCase'],
+					format: ['PascalCase',],
 					custom: {
 						regex: '^I[A-Z]',
 						match: true,
@@ -54,25 +54,25 @@ export default [
 				},
 				{
 					selector: 'variable',
-					format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+					format: ['camelCase', 'UPPER_CASE', 'PascalCase',],
 					leadingUnderscore: 'allowDouble',
 					trailingUnderscore: 'allowDouble',
 				},
 				{
 					selector: 'function',
-					format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+					format: ['camelCase', 'UPPER_CASE', 'PascalCase',],
 					leadingUnderscore: 'allow',
 					trailingUnderscore: 'allow',
 				},
 				{
 					selector: 'class',
-					format: ['PascalCase'],
+					format: ['PascalCase',],
 				},
 			],
 			'no-cond-assign': 'off',
 			'optimize-regex/optimize-regex': 'warn',
 			'class-methods-use-this': 'off',
-			indent: [2, 'tab'],
+			indent: [2, 'tab',],
 			'no-tabs': 'off',
 			'lines-between-class-members': [
 				'error',
@@ -84,7 +84,7 @@ export default [
 			'react/jsx-filename-extension': [
 				2,
 				{
-					extensions: ['.js', '.jsx', '.ts', '.tsx'],
+					extensions: ['.js', '.jsx', '.ts', '.tsx',],
 				},
 			],
 			'import/no-unresolved': 'off',
@@ -126,8 +126,8 @@ export default [
 			'react/no-unused-class-component-methods': 'off',
 			'react/prop-types': 0,
 			'react/jsx-props-no-spreading': 'off',
-			'react/jsx-indent': [2, 'tab'],
-			'react/jsx-indent-props': [2, 'tab'],
+			'react/jsx-indent': [2, 'tab',],
+			'react/jsx-indent-props': [2, 'tab',],
 			'react/function-component-definition': [
 				2,
 				{
@@ -140,10 +140,10 @@ export default [
 				'error',
 				{
 					markupOnly: true,
-					ignoreAttribute: ['data-testid', 'to'],
-				}],
-			'semi': ['error', 'always'],
-			'object-curly-spacing': ['error', 'always'],
+					ignoreAttribute: ['data-testid', 'to',],
+				},],
+			'semi': ['error', 'always',],
+			'object-curly-spacing': ['error', 'always',],
 		},
 		settings: {
 			'import/resolver': {
@@ -157,19 +157,19 @@ export default [
 		},
 	},
 	{
-		files: ['*.tsx'],
+		files: ['*.tsx',],
 		rules: {
 			'@typescript-eslint/naming-convention': [
 				'error',
 				{
 					selector: 'variable',
-					format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+					format: ['camelCase', 'UPPER_CASE', 'PascalCase',],
 					leadingUnderscore: 'allowDouble', // Разрешает двойные подчеркивания в начале
 					trailingUnderscore: 'allowDouble', // Разрешает двойные подчеркивания в конце
 				},
 				{
 					selector: 'variable',
-					format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+					format: ['camelCase', 'UPPER_CASE', 'PascalCase',],
 					leadingUnderscore: 'allow',
 					trailingUnderscore: 'allow',
 				},

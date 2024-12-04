@@ -26,6 +26,8 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/webpack-bundle-analyzer": "^4.7.0",
     "@types/webpack-env": "^1.18.5",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
     "babel-loader": "^9.2.1",
     "babel-plugin-i18next-extract": "^0.10.0",
     "eslint": "^8.57.1",
@@ -52,8 +54,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.4.0",
-    "@typescript-eslint/eslint-plugin": "^8.14.0",
-    "@typescript-eslint/parser": "^8.14.0",
     "css-loader": "^7.1.2",
     "eslint-plugin-optimize-regex": "^1.2.1",
     "i18next": "^23.16.4",

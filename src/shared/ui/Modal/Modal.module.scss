@@ -28,17 +28,6 @@
   color: var(--primary-color);
 }
 
-.Modal.dark {
-  --bg-color: #1e1e2e;
-  --primary-color: #cdd6f4;
-}
-
-.Modal.light {
-  --bg-color: #e5e5e5;
-  --primary-color: #000994;
-}
-
-
 .opened {
   z-index: var(--modal-z-index);
   opacity: 1;

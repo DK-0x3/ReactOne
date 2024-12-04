@@ -23,7 +23,6 @@ export const Modal = (props: IModalProps) => {
 
 	const [isClosing, setIsClosing] = React.useState(false);
 	const timerRef = useRef<ReturnType<typeof setTimeout>>();
-	const { theme } = useTheme();
 
 	const closeHandler = useCallback(() => {
 		if (onClose) {
@@ -59,7 +58,6 @@ export const Modal = (props: IModalProps) => {
 	const mods: Record<string, boolean> = {
 		[cls.opened]: isOpen,
 		[cls.closing]: isClosing,
-		[cls[theme]]: true,
 	};
 
 	return (

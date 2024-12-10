@@ -7,6 +7,8 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
 // Добавление парсинга JSON
 server.use(jsonServer.bodyParser);
+const cors = require('cors');
+server.use(cors());
 
 server.use(async (req, res, next) => {
 	await new Promise((resolve) => {
@@ -32,7 +34,7 @@ server.post('/login', (req, res) => {
 		return res.json(userFromBd); // Возврат данных пользователя
 	}
 
-	return res.status(400).json({ message: 'Authorization error' }); // Ошибка аутентификации
+	return res.status(403).json({ message: 'Authorization error' }); // Ошибка аутентификации
 });
 
 // Middleware для авторизации

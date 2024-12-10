@@ -54,6 +54,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.4.0",
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
     "css-loader": "^7.1.2",
     "eslint-plugin-optimize-regex": "^1.2.1",
     "i18next": "^23.16.4",

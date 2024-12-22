@@ -8,16 +8,21 @@ interface ILoaderProps {
 
 export const Loader: React.FC<ILoaderProps> = ({ className }: ILoaderProps) => {
 	return (
-		<div className={classNames('lds-grid', {}, [className])}>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+		// <div className={classNames('lds-grid', {}, [className])}>
+		// 	<div></div>
+		// 	<div></div>
+		// 	<div></div>
+		// 	<div></div>
+		// 	<div></div>
+		// 	<div></div>
+		// 	<div></div>
+		// 	<div></div>
+		// 	<div></div>
+		// </div>
+		<div className="loader">
+			<div className="inner one"></div>
+			<div className="inner two"></div>
+			<div className="inner three"></div>
 		</div>
 	);
 };

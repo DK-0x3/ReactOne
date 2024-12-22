@@ -1,25 +1,44 @@
-import {classNames} from 'shared/lib/classNames/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import * as cls from './LoginForm.module.scss';
-import {useTranslation} from 'react-i18next';
-import {Button, ThemeButton} from 'shared/ui/Button/Button';
-import {Input} from 'shared/ui/input/Input';
-import {useSelector} from 'react-redux';
-import {memo, useCallback} from 'react';
-import {loginActions} from '../../model/slice/LoginSlice';
-import {getLoginState} from '../../model/selectors/getLoginState/getLoginState';
-import {loginByUsername, LoginError} from '../../model/services/loginByUsername/loginByUsername';
-import {useAppDispatch} from 'app/providers/StoreProvider/hook/useAppDispatch';
-import {ITextTheme, Text} from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Input } from 'shared/ui/input/Input';
+import { useSelector, useStore } from 'react-redux';
+import { memo, useCallback, useEffect } from 'react';
+import { loginActions, loginReducer } from '../../model/slice/LoginSlice';
+import { loginByUsername, LoginError } from '../../model/services/loginByUsername/loginByUsername';
+import { useAppDispatch } from 'app/providers/StoreProvider/hook/useAppDispatch';
+import { ITextTheme, Text } from 'shared/ui/Text/Text';
+import { IReduxStoreWithManager } from 'app/providers/StoreProvider/config/IStateSchema';
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 
-interface ILoginFormProps {
+export interface ILoginFormProps {
     className?: string;
 }
 
 // eslint-disable-next-line react/display-name
-export const LoginForm = memo(({ className }: ILoginFormProps) => {
+const LoginForm = memo(({ className }: ILoginFormProps) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const { username, password, isLoading, error } = useSelector(getLoginState);
+	const store = useStore() as IReduxStoreWithManager;
+
+	const username = useSelector(getLoginUsername);
+	const password = useSelector(getLoginPassword);
+	const isLoading = useSelector(getLoginIsLoading);
+	const error = useSelector(getLoginError);
+
+	useEffect(() => {
+		store.reducerManager.add('loginForm', loginReducer);
+		dispatch({ type: '@INIT loginForm reducer' });
+
+		return () => {
+			store.reducerManager.remove('loginForm');
+			dispatch({ type: '@DESTROY loginForm reducer' });
+		};
+	}, []);
 
 	const onChangeUsername = useCallback((value: string) => {
 		dispatch(loginActions.setUsername(value));
@@ -68,3 +87,5 @@ export const LoginForm = memo(({ className }: ILoginFormProps) => {
 		</div>
 	);
 });
+
+export default LoginForm;

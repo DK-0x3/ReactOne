@@ -14,31 +14,25 @@ import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLogi
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader';
 
 export interface ILoginFormProps {
     className?: string;
 }
 
+const initialReducers: ReducersList = {
+	loginForm: loginReducer,
+};
+
 // eslint-disable-next-line react/display-name
 const LoginForm = memo(({ className }: ILoginFormProps) => {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const store = useStore() as IReduxStoreWithManager;
 
 	const username = useSelector(getLoginUsername);
 	const password = useSelector(getLoginPassword);
 	const isLoading = useSelector(getLoginIsLoading);
 	const error = useSelector(getLoginError);
-
-	useEffect(() => {
-		store.reducerManager.add('loginForm', loginReducer);
-		dispatch({ type: '@INIT loginForm reducer' });
-
-		return () => {
-			store.reducerManager.remove('loginForm');
-			dispatch({ type: '@DESTROY loginForm reducer' });
-		};
-	}, []);
 
 	const onChangeUsername = useCallback((value: string) => {
 		dispatch(loginActions.setUsername(value));
@@ -58,33 +52,38 @@ const LoginForm = memo(({ className }: ILoginFormProps) => {
 	} else if (error === LoginError.INTERNAL_SERVER_ERROR) {
 		errorMessage = 'Ошибка сервера попробуйте позже';
 	}
-    
+
 	return (
-		<div className={classNames(cls.LoginForm, {}, [className])}>
-			<Text title={t('Авторизация')}/>
-			{errorMessage && <Text text={errorMessage} theme={ITextTheme.ERROR}/>}
-			<Input
-				className={cls.input}
-				placeholder={t('Введите имя пользователя')}
-				autoFocus={true}
-				onChange={onChangeUsername}
-				value={username}
-			/>
-			<Input
-				className={cls.input}
-				placeholder={t('Введите пароль')}
-				onChange={onChangePassword}
-				value={password}
-			/>
-			<Button
-				theme={ThemeButton.OUTLINE}
-				className={cls.loginBtn}
-				onClick={onLoginClick}
-				disabled={isLoading}
-			>
-				{t('Войти')}
-			</Button>
-		</div>
+		<DynamicModuleLoader
+			reducers={initialReducers}
+			removeAfterUnmount={true}
+		>
+			<div className={classNames(cls.LoginForm, {}, [className])}>
+				<Text title={t('Авторизация')}/>
+				{errorMessage && <Text text={errorMessage} theme={ITextTheme.ERROR}/>}
+				<Input
+					className={cls.input}
+					placeholder={t('Введите имя пользователя')}
+					autoFocus={true}
+					onChange={onChangeUsername}
+					value={username}
+				/>
+				<Input
+					className={cls.input}
+					placeholder={t('Введите пароль')}
+					onChange={onChangePassword}
+					value={password}
+				/>
+				<Button
+					theme={ThemeButton.OUTLINE}
+					className={cls.loginBtn}
+					onClick={onLoginClick}
+					disabled={isLoading}
+				>
+					{t('Войти')}
+				</Button>
+			</div>
+		</DynamicModuleLoader>
 	);
 });
 

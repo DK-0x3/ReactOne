@@ -3,9 +3,14 @@ import { IStateSchema } from './IStateSchema';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
+import { DeepPartial } from 'utility-types';
 
-export function createReduxStore(initialState?: IStateSchema) {
+export function createReduxStore(
+	initialState?: IStateSchema,
+	asyncReducers?: ReducersMapObject<IStateSchema>,
+) {
 	const rootReducers: ReducersMapObject<IStateSchema> = {
+		...asyncReducers,
 		counter: counterReducer,
 		user: userReducer,
 	};

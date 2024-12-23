@@ -46,6 +46,7 @@ export const Navbar = ({ className }: INavbarProps) => {
 			</div>
 		);
 	}
+
 	return (
 		<div className={classNames(cls.Navbar, {}, [className])}>
 			<div className={cls.links}>
